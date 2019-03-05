@@ -61,6 +61,8 @@ For demonstration purposes the model/ folder contains the model
 by VIErus https://www.thingiverse.com/VIErus
 RELEASED UNDER CC-BY http://creativecommons.org/licenses/by/3.0/
 
+run the demo: ./md2view model/ratamahatta.md2 model/ratamahatta.png
+
 5. TECHNICAL INFO
 
 The necessary information about the MD2 file format was obtained from:
