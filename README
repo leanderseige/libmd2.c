@@ -1,0 +1,88 @@
+libmd2.c - a set of functions and structures to load and display MD2 models
+
+Version 1.0
+
+(c) 2005 Leander Seige, www.determinate.net/webdata/seg/snippets.html
+contact: snippets@determinate.net
+
+RELEASED UNDER THE TERMS OF THE GNU GENERAL PUBLIC LICENSE (GPL) V3
+see www.determinate.net/webdata/seg/COPYING for more
+
+
+1. INTRODUCTION
+
+I needed a MD2 model loader and could find only C++ ones so I decided
+to write my own in C. Here it is.
+It is close to be a real library but I'm too lazy for now to make the
+necessary changes. For now it's only a C file you can include in your
+project.
+
+
+2. FEATURES
+
+- loading MD2 models
+- loading textures from a wide range of file formats
+- three different kinds of normal calculation
+- dynamic bounding box calculation
+- render with or without texturing, as points or wireframe
+- arbitrary keyframe interpolation
+- handles the usual MD2 animation sequences
+- texture independent from model, load multiple textures per model
+
+
+3. REQUIREMENTS
+
+libmd2.c is based on OpenGL and SDL, you need both to make it work.
+It loads the model by an own model loader and the textures via SDL_image,
+so make sure you have SDL_image installed. 
+Of course you need all these libraries also with their devel packages.
+The sample programs make use of OpenGL extensions and assumes silently
+that they are present (for instance GL_TEXTURE_RECTANGLE_NV).
+
+
+4. INSTALLATION
+
+Download and unpack the archive. Move to the directory and call the
+compile.sh shell script. It contains my commands to compile both
+sample applications, so you probably have to change it to make it
+work on your system.
+
+- md2view displays the md2 model, read its output on the terminal to
+  know how it works. 
+
+- md2info dumps some information about a model file to the terminal.
+
+To use libmd2.c in your own projects just copy the libmd2.c file to the
+source directory of your project and include it from your source
+files like it is done in the sample applications.
+
+DEMO
+
+For demonstration purposes the model/ folder contains the model
+"Ratamahatta" https://www.thingiverse.com/thing:3429029
+by VIErus https://www.thingiverse.com/VIErus
+RELEASED UNDER CC-BY http://creativecommons.org/licenses/by/3.0/
+
+5. TECHNICAL INFO
+
+The necessary information about the MD2 file format was obtained from:
+
+http://tfc.duke.free.fr/old/models/md2.htm and
+http://gpwiki.org/index.php/MD2
+
+The libmd2.c uses triangle-by-triangle rendering or fans/strips (glcommands)
+depending on which normal calculation was requested.
+Probably the rendering can still be accelerated by using arrays for vertex,
+texture coordinates or normal information. But it's pretty fast already.
+
+per face normals:
+     all three vertices of a triangle have the same normal vector,
+     suitable for hard models like robots or so
+
+per vertex normals:
+    the calculation of a normal of a vertex involves all triangles
+    the vertex is member of, suitable for smooth round models like human
+    beings
+    
+average normals:
+    the average of per vertex and per face normals
