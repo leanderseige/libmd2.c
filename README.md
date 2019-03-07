@@ -1,0 +1,1 @@
+[GitHub Logo](animation.gif)

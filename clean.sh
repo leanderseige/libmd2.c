@@ -6,3 +6,5 @@
 
 rm md2info
 rm md2view
+rm md2demo
+rm *bmp
