@@ -1,6 +1,6 @@
 # libmd2.c
 outdated, deprecated work from 2005
-C functions to load Quake II MD2 model files and render them using OpenGL, GPL Version 3, see README
+C functions to load Quake II MD2 model files and render them using OpenGL, GPL Version 3, see [README](README)
 
 ![demo animation](animation.gif)
 
